@@ -10,87 +10,93 @@ const BoatDetails = () => {
   const idBoat = useParams();
   const user = useSelector(selectUser);
 
-  const boat = boatDetailsState.boatDetails;
+  const {
+    name, picture, description, color, rent_price: rentPrice, price,
+  } = boatDetailsState.boatDetails;
 
   useEffect(() => {
     dispatch(getBoatDetails(idBoat.id));
-  }, [dispatch]);
+  }, [dispatch, idBoat.id]);
 
   return (
-    <section className="h-full w-full flex flex-col justify-between">
-      <div className="md flex p-5 justify-center  md:mb-18 lg:justify-end mr-6 ">
-        <h1 className="text-3xl font-medium text-black-100 uppercase">
-          {boat.name}
-        </h1>
+    <section className="flex flex-col justify-between lg:h-screen lg:py-6">
+      <div className="flex p-5 justify-center lg:justify-end">
+        <h2 className="text-3xl my-4 font-bold text-black uppercase">
+          {name}
+        </h2>
       </div>
-      <div className="md:flex md:mt-30 ">
-        <div className="imagen w-full p-1 rounded md:p-8 lg:h-full flex justify-center ">
+      <div className="md:w-[70%] md:mx-auto lg:flex lg:w-[98%]">
+        <div className="w-full p-6 flex justify-center">
           <img
-            className="flex justify-center w-80 object-contain sm:object-fill md:w-4/5 rounded-full"
-            src={boat.picture}
+            className="flex justify-center object-contain rounded-lg w-[80%]"
+            src={picture}
             alt="boat"
           />
         </div>
-        <div className="boat-details-container h-3/5 md:h-full md:w-1/2 p-8 bg-white rounded-lg">
+        <div className="p-6 bg-white rounded-lg">
           {/* Description */}
-          <div className="details-section flex justify-between items-center md:block mb-4 bg-gray-100 p-4 rounded">
-            <h2 className="section-title text-lg font-bold text-gray-600">
+          <div className="justify-between items-center mb-4 bg-gray-100 p-4 rounded">
+            <h3 className="text-lg text-center font-bold text-gray-600">
               Description
-            </h2>
-            <p className="text-gray-500 ml-6 mt-2">{boat.description}</p>
+            </h3>
+            <p className="mt-2">{description}</p>
           </div>
 
           {/* Color */}
-          <div className="details-section flex justify-between items-center md:block mb-4 bg-gray-100 p-4 rounded">
-            <h2 className="section-title text-lg font-bold text-gray-600">
-              Color
-            </h2>
-            <p className="text-gray-500 ml-6 mt-2">{boat.color}</p>
+          <div className="flex justify-between items-center mb-4 bg-gray-100 p-4 rounded">
+            <h3 className="text-lg font-bold text-gray-600">
+              Colour
+            </h3>
+            <p>{color}</p>
           </div>
 
           {/* Rent per day */}
-          <div className="details-section flex justify-between items-center md:block mb-4 bg-gray-100 p-4 rounded">
-            <h2 className="section-title text-lg font-bold text-gray-600">
+          <div className="flex justify-between items-center mb-4 bg-gray-100 p-4 rounded">
+            <h3 className="text-lg font-bold text-gray-600">
               Rent per day
-            </h2>
-            <p className="text-gray-500 ml-6 mt-2">
+            </h3>
+            <p>
               $
-              {boat.rent_price}
+              {Math.round(rentPrice)}
             </p>
           </div>
 
           {/* Full Purchase Price */}
-          <div className="details-section flex justify-between items-center md:block mb-4 bg-gray-100 p-4 rounded">
-            <h2 className="section-title text-lg font-bold text-gray-600">
+          <div className="flex justify-between items-center mb-4 bg-gray-100 p-4 rounded">
+            <h3 className="text-lg font-bold text-gray-600">
               Full Purchase Price
-            </h2>
-            <p className="text-gray-500 ml-6 mt-2">
+            </h3>
+            <p>
               $
-              {boat.price}
+              {Math.round(price)}
             </p>
           </div>
-
-          {/* Reserve Now button */}
-          {user !== null && (
-            <div className="reserve-btn flex justify-center pt-8">
-              <a
-                href="/reserve"
-                className="font-semibold px-4 py-2 text-xl bg-lime-500 sm:px-8 sm:py-5 rounded-full text-gray-100 "
-              >
-                <span>Reserve</span>
-                <span className="text-xl ml-4">&#10148;</span>
-              </a>
-            </div>
-          )}
         </div>
       </div>
-      <a
-        type="button"
-        href="/boats"
-        className="font-bold w-20 text-3xl bg-lime-500 pl-10 pr-4 py-5 mb-4 rounded-r-3xl text-white flex justify-start "
-      >
-        {'<'}
-      </a>
+      {/* Buttons */}
+      <div className="flex justify-between mb-10">
+        <a
+          type="button"
+          href="/boats"
+          className="font-bold w-20 text-2xl bg-lime-500 pl-10 pr-4 py-3 rounded-r-3xl text-white"
+        >
+          {'<'}
+        </a>
+
+        {/* Reserve Now button */}
+        {user && (
+          <a
+            href="/reserve"
+            className="font-bold px-6 py-3 text-2xl bg-lime-500 rounded-l-3xl text-white"
+          >
+            <span>
+              Reserve
+              {' '}
+              {'>'}
+            </span>
+          </a>
+        )}
+      </div>
     </section>
   );
 };

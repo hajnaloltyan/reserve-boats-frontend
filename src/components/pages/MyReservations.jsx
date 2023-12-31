@@ -8,7 +8,9 @@ function MyReservations() {
   const { reservations } = useSelector((state) => state.reservations);
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  const userReservations = reservations.filter((e) => e.username === user?.name);
+  const userReservations = Array.isArray(reservations)
+    ? reservations.filter((e) => e.username === user?.name)
+    : [];
   const boats = useSelector(selectAllBoats);
 
   useEffect(() => {

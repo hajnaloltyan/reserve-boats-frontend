@@ -46,8 +46,8 @@ function Reserve() {
   }, []);
 
   return (
-    <section className="image h-full">
-      <article className="h-full overlay lg:flex lg:flex-col lg:justify-center lg:items-center">
+    <section className="image h-[85vh] md:h-[82vh] lg:h-[100vh]">
+      <article className="overlay lg:flex lg:flex-col lg:justify-center lg:items-center">
         <h2 className="text-white text-center text-2xl font-black lg:text-3xl uppercase py-6">
           Reserve a Boat Trip
         </h2>

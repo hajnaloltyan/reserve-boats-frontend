@@ -3,15 +3,15 @@ import React from 'react';
 import Header from './Header';
 
 const Layout = () => (
-  <section className="flex flex-col lg:flex-row h-screen">
-    <header className="lg:w-1/5 border-r border-slate-200">
+  <>
+    <header className="lg:fixed lg:left-0 lg:top-0 lg:bottom-0 lg:w-[18%] lg:border-r border-slate-200 p-4">
       <Header />
     </header>
 
-    <main className="w-full h-full">
+    <main className="lg:ml-[18%]">
       <Outlet />
     </main>
-  </section>
+  </>
 );
 
 export default Layout;

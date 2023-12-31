@@ -6,7 +6,7 @@ import {
 } from 'react-icons/fa';
 import { selectUser } from '../redux/usersession/usersessionsSlice';
 import Logout from './Logout';
-import boatLogo from '../Assets/Images/logo/boat-logo-3.png';
+import boatLogo from '../assets/images/boat-logo.png';
 
 const Header = () => {
   const user = useSelector(selectUser);
@@ -24,9 +24,9 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="p-4 h-full border-b border-slate-300">
+    <>
       {/* Mobile */}
-      <section className="lg:hidden">
+      <article className="lg:hidden">
         <div className="flex justify-between">
           <button
             type="button"
@@ -50,7 +50,7 @@ const Header = () => {
             </svg>
           </button>
 
-          <img src={boatLogo} alt="Boat Logo" className="w-20" />
+          <img src={boatLogo} alt="Boat Logo" className="w-24 md:w-32" />
         </div>
 
         <nav
@@ -81,7 +81,7 @@ const Header = () => {
               </svg>
             </button>
 
-            <img src={boatLogo} alt="Boat Logo" className="w-20" />
+            <img src={boatLogo} alt="Boat Logo" className="w-24 md:w-32" />
           </div>
 
           <ul className="flex flex-col text-xl font-bold items-center mb-[150px] uppercase">
@@ -102,7 +102,7 @@ const Header = () => {
                 {' '}
                 {user.name}
                 {' | '}
-                <Logout />
+                <Logout setIsOpen={setIsOpen} />
               </li>
             )}
           </ul>
@@ -153,10 +153,10 @@ const Header = () => {
             <p className="text-xs text-center">&copy; 2023 Boats</p>
           </div>
         </nav>
-      </section>
+      </article>
 
       {/* Desktop */}
-      <section className="hidden lg:flex flex-col justify-between h-full pb-6 border-r-slate-900">
+      <article className="hidden lg:flex flex-col justify-between h-full pb-6 border-r-slate-900">
         <img src={boatLogo} alt="boat-logo-full" />
 
         <nav className="mb-[200px] uppercase">
@@ -219,10 +219,10 @@ const Header = () => {
               <FaPinterest />
             </a>
           </div>
-          <p className="text-xs text-center">&copy; 2023 Boats</p>
+          <p className="text-xs text-center">&copy; 2023-2024 Boats</p>
         </div>
-      </section>
-    </header>
+      </article>
+    </>
   );
 };
 

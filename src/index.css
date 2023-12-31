@@ -8,7 +8,6 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: 100%;
 }
 
 .active {
@@ -29,4 +28,6 @@ a {
 
 .overlay {
   background-color: rgba(125, 166, 45, 0.8);
+  width: 100%;
+  height: 100%;
 }

@@ -175,7 +175,7 @@ const Header = () => {
                 {user.name}
                 !
                 {' | '}
-                <Logout />
+                <Logout setIsOpen={setIsOpen} />
               </li>
             )}
           </ul>

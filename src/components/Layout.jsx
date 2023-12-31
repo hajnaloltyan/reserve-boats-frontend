@@ -8,7 +8,7 @@ const Layout = () => (
       <Header />
     </header>
 
-    <main className="lg:ml-[18%]">
+    <main className="lg:pl-[18%]">
       <Outlet />
     </main>
   </>

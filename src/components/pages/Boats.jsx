@@ -20,13 +20,13 @@ const Boats = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = Array.isArray(boats)
-    ? boats.slice(indexOfFirstItem, indexOfLastItem)
+    ? [...boats].reverse().slice(indexOfFirstItem, indexOfLastItem)
     : [];
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <section className="my-6 flex flex-col items-center lg:mt-[6%]">
+    <section className="my-8 flex flex-col items-center lg:my-[6%]">
       <h2 className="text-center text-2xl font-black my-4 lg:text-3xl lg:my-10 uppercase">
         All Boat Models
       </h2>
@@ -43,7 +43,7 @@ const Boats = () => {
         </>
       )}
 
-      <div className="flex flex-col gap-10 lg:grid lg:grid-cols-11 w-full">
+      <div className="flex flex-col gap-8 lg:grid lg:grid-cols-11">
         <button
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}

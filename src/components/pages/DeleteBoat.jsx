@@ -19,57 +19,46 @@ function DeleteBoat() {
   };
 
   return (
-    <>
-      {user === null ? (
-        <section className="h-full flex justify-center items-center">
-          <article className="flex flex-col gap-4 border border-slate-950 rounded-md p-4 mx-auto max-w-xs lg:max-w-lg">
-            <h2 className="font-black uppercase text-4xl text-center">Acces Denied</h2>
-            <p className="text-center text-md">Please Log In first so you can Delete a boat.</p>
-          </article>
-        </section>
-      ) : (
-        <section className="h-full">
-          <article className="flex flex-col items-center mx-auto max-w-xs lg:max-w-lg h-full">
-            <h2 className="text-center text-2xl font-black my-4 lg:text-4xl lg:my-10 uppercase">
-              Delete Boats
-            </h2>
-            <h4 className="text-center">
-              Please click on Delete button to delete a boat
-            </h4>
-            <p className="text-gray-300 my-6">********************</p>
-            <div className="flex flex-col gap-y-2 w-full">
-              {currentItems
-              && boats.map((boat) => (
-                <div
-                  key={boat.id}
-                  className="flex justify-between items-center border border-black p-2"
+    <section className="h-full">
+      <article className="flex flex-col items-center mx-auto max-w-xs lg:max-w-lg h-full">
+        <h2 className="text-center text-2xl font-black my-4 lg:text-4xl lg:my-10 uppercase">
+          Delete Boats
+        </h2>
+        <h4 className="text-center">
+          Please click on Delete button to delete a boat
+        </h4>
+        <p className="text-gray-300 my-6">********************</p>
+        <div className="flex flex-col gap-y-2 w-full">
+          {currentItems
+          && boats.map((boat) => (
+            <div
+              key={boat.id}
+              className="flex justify-between items-center border border-black p-2"
+            >
+              <h1>{boat.name}</h1>
+              {boat.user_id === user.id ? (
+                <button
+                  type="button"
+                  onClick={() => handleClick(boat.id)}
+                  className="bg-red-600 py-1 rounded w-16 text-center text-white font-semibold hover:bg-red-800"
                 >
-                  <h1>{boat.name}</h1>
-                  {boat.user_id === user.id ? (
-                    <button
-                      type="button"
-                      onClick={() => handleClick(boat.id)}
-                      className="bg-red-600 py-1 rounded w-16 text-center text-white font-semibold hover:bg-red-800"
-                    >
-                      Delete
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      disabled
-                      title="You can only delete your boats"
-                      className="py-1 border border-slate-950 rounded w-16 text-center"
-                    >
-                      Delete
-                    </button>
-                  )}
-                </div>
-              ))}
+                  Delete
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  title="You can only delete your boats"
+                  className="py-1 border border-slate-950 rounded w-16 text-center"
+                >
+                  Delete
+                </button>
+              )}
             </div>
-          </article>
-        </section>
-      )}
-    </>
+          ))}
+        </div>
+      </article>
+    </section>
   );
 }
 

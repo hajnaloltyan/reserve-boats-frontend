@@ -12,10 +12,12 @@ const Header = () => {
   const user = useSelector(selectUser);
   const links = [
     { path: '/boats', text: 'Boats' },
-    { path: '/reserve', text: 'Reserve' },
-    { path: '/my-reservations', text: 'My Reservations' },
-    { path: '/add-boat', text: 'Add Boat' },
-    { path: '/delete-boat', text: 'Delete Boat' },
+    ...(user ? [
+      { path: '/reserve', text: 'Reserve' },
+      { path: '/my-reservations', text: 'My Reservations' },
+      { path: '/add-boat', text: 'Add Boat' },
+      { path: '/delete-boat', text: 'Delete Boat' },
+    ] : []),
     ...(user ? [] : [{ path: '/login', text: 'Login' }, { path: '/signup', text: 'Sign up' }]),
   ];
 

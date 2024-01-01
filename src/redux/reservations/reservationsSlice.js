@@ -7,13 +7,21 @@ const initialState = {
 
 export const getReservations = createAsyncThunk(
   'reservation/getreservation',
-  async () => {
+  async (_, thunkAPI) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userName = user?.name;
+    console.log(userName);
     try {
-      const response = await fetch('http://127.0.0.1:3001/api/v1/reservations');
+      const response = await fetch('http://127.0.0.1:3001/api/v1/reservations', {
+        headers: {
+          Authorization: userName,
+        },
+      });
       const data = await response.json();
+      console.log(data);
       return data;
     } catch (error) {
-      throw new Error(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
@@ -29,7 +37,7 @@ export const createReservation = createAsyncThunk(
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(postData),
+          body: JSON.stringify({ reservation: postData }),
         },
       );
 
@@ -39,6 +47,7 @@ export const createReservation = createAsyncThunk(
       }
 
       const data = await response.json();
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -68,3 +77,5 @@ const reservationsSlice = createSlice({
 });
 
 export default reservationsSlice.reducer;
+
+export const selectReservations = (state) => state.reservations.reservations;

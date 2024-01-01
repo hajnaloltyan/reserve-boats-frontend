@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 import { selectUser } from '../../redux/usersession/usersessionsSlice';
 import { createReservation } from '../../redux/reservations/reservationsSlice';
 
@@ -12,28 +13,27 @@ function Reserve() {
   const [date, setDate] = useState('');
   const [boatId, setBoatId] = useState(undefined);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await dispatch(
-      createReservation({
-        username,
-        city,
-        date,
-        boat_id: boatId,
-      }),
-    );
-
-    Swal.fire({
-      icon: 'success',
-      title: 'Boat Reserved Successfully',
-      text: 'Your reservation has been successfully created.',
-    });
-
-    setUsername('');
-    setCity('');
-    setDate('');
-    setBoatId(undefined);
+    try {
+      await dispatch(createReservation({
+        username, city, date, boat_id: boatId,
+      })).unwrap();
+      Swal.fire({
+        title: 'Reservation Successful',
+        text: 'You have successfully reserved a boat',
+        icon: 'success',
+      });
+      navigate('/boats');
+    } catch (err) {
+      Swal.fire({
+        title: 'Failed to reserve',
+        text: 'Please check the form and try again',
+        icon: 'error',
+      });
+    }
   };
 
   useEffect(() => {

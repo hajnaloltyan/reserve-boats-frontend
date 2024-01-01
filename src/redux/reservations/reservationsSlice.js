@@ -10,7 +10,6 @@ export const getReservations = createAsyncThunk(
   async (_, thunkAPI) => {
     const user = JSON.parse(localStorage.getItem('user'));
     const userName = user?.name;
-    console.log(userName);
     try {
       const response = await fetch('http://127.0.0.1:3001/api/v1/reservations', {
         headers: {
@@ -18,7 +17,6 @@ export const getReservations = createAsyncThunk(
         },
       });
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -47,7 +45,6 @@ export const createReservation = createAsyncThunk(
       }
 
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

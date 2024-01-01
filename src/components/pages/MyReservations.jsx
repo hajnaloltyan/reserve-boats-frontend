@@ -14,9 +14,9 @@ function MyReservations() {
   }, [dispatch]);
 
   return (
-    <section className="my-6 lg:my-16">
+    <section className="my-6 lg:pt-28">
       <article className="flex flex-col gap-y-3 mx-auto">
-        <h2 className="text-center text-2xl font-black lg:text-3xl uppercase">
+        <h2 className="text-center text-2xl font-bold lg:text-3xl uppercase">
           My reservations
         </h2>
         <p className="text-center">Here you can see all your reservations.</p>

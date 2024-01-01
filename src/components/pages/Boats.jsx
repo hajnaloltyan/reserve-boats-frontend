@@ -54,22 +54,24 @@ const Boats = () => {
         </button>
 
         {boats.length > 0
-          && currentItems.map((boat) => (
-            <div key={boat.id} className="max-w-md mx-auto lg:col-span-3 p-12 lg:p-4">
-              <Link to={`/boats/${boat.id}`} className="block">
+          && currentItems.map(({
+            id, name, picture, description,
+          }) => (
+            <div key={id} className="max-w-md mx-auto lg:col-span-3 p-12 lg:p-4">
+              <Link to={`/boats/${id}`} className="block">
                 <img
-                  src={boat.picture}
-                  alt={boat.name}
+                  src={picture}
+                  alt={name}
                   className="object-contain rounded-md w-full"
                 />
               </Link>
               <h3 className="text-center text-xl font-bold my-4">
-                {boat.name}
+                {name}
               </h3>
               <p className="text-gray-300 mb-4 text-center">
                 ********************
               </p>
-              <p className="text-center mb-6">{boat.description}</p>
+              <p className="text-center mb-6">{description}</p>
               <div className="flex justify-center gap-10">
                 <a
                   href="https://twitter.com"

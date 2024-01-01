@@ -19,41 +19,34 @@ function DeleteBoat() {
   };
 
   return (
-    <section className="h-full">
-      <article className="flex flex-col items-center mx-auto max-w-xs lg:max-w-lg h-full">
-        <h2 className="text-center text-2xl font-black my-4 lg:text-4xl lg:my-10 uppercase">
+    <section className="h-full lg:pt-28">
+      <article className="flex flex-col items-center mx-auto h-full">
+        <h2 className="text-center text-2xl font-bold my-4 lg:text-3xl lg:my-10 uppercase">
           Delete Boats
         </h2>
         <h4 className="text-center">
           Please click on Delete button to delete a boat
         </h4>
         <p className="text-gray-300 my-6">********************</p>
-        <div className="flex flex-col gap-y-2 w-full">
+        <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 lg:px-10">
           {currentItems
-          && boats.map((boat) => (
-            <div
-              key={boat.id}
-              className="flex justify-between items-center border border-black p-2"
-            >
-              <h1>{boat.name}</h1>
-              {boat.user_id === user.id ? (
-                <button
-                  type="button"
-                  onClick={() => handleClick(boat.id)}
-                  className="bg-red-600 py-1 rounded w-16 text-center text-white font-semibold hover:bg-red-800"
-                >
-                  Delete
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  disabled
-                  title="You can only delete your boats"
-                  className="py-1 border border-slate-950 rounded w-16 text-center"
-                >
-                  Delete
-                </button>
-              )}
+          && boats.filter((boat) => boat.user_id === user.id).map(({ id, picture, name }) => (
+            <div key={id} className="mx-auto col-span-1 p-12 lg:p-4 flex flex-col items-center">
+              <img
+                src={picture}
+                alt={name}
+                className="object-contain rounded-md w-full"
+              />
+              <h3 className="text-center text-xl font-bold my-4">
+                {name}
+              </h3>
+              <button
+                type="button"
+                onClick={() => handleClick(id)}
+                className="bg-red-600 rounded w-20 py-2 text-center text-white font-semibold hover:bg-red-800"
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>

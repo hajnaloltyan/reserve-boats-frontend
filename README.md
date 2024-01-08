@@ -79,7 +79,7 @@ This user-friendly site boasts a responsive design, ensuring a seamless experien
 
 The site has 2 separate repositories, this is the Frontend repository.
 
-Link to the [Back End Repository](https://github.com/Felipe-Perez-Ferraro/final_capstone_back)
+Link to the [Back End Repository](https://github.com/hajnaloltyan/reserve-boats-backend)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -101,7 +101,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone https://github.com/Felipe-Perez-Ferraro/final_capstone_front.git
+  git clone git@github.com:hajnaloltyan/reserve-boats-backend.git
 ```
 
 ### Install
@@ -160,7 +160,7 @@ To run the project, execute the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Felipe-Perez-Ferraro/final_capstone_front/issues).
+Feel free to check the [issues page](https://github.com/hajnaloltyan/reserve-boats-frontend/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

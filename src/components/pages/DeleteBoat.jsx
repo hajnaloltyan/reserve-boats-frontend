@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 import { deleteBoat, fetchBoats, selectAllBoats } from '../../redux/boats/boatsSlice';
 import { selectUser } from '../../redux/usersession/usersessionsSlice';
 
@@ -15,6 +16,11 @@ function DeleteBoat() {
 
   const handleClick = (id) => {
     dispatch(deleteBoat(id));
+    Swal.fire({
+      title: 'Boat Deleted',
+      text: 'You have successfully deleted the boat',
+      icon: 'success',
+    });
     dispatch(fetchBoats());
   };
 

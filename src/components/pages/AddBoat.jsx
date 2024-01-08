@@ -47,15 +47,15 @@ const AddBoat = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-8 p-4 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold mb-4 flex justify-center">
+    <div className="max-w-2xl mx-auto my-6 px-6 lg:pt-28 text-center">
+      <h2 className="text-2xl font-bold py-10 flex justify-center">
         Add Boat
       </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-700"
+            className="addboat-label"
           >
             Name
           </label>
@@ -65,13 +65,13 @@ const AddBoat = () => {
             name="name"
             value={boatData.name}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full"
+            className="addboat-form"
           />
         </div>
         <div>
           <label
             htmlFor="description"
-            className="block text-sm font-medium text-gray-700"
+            className="addboat-label"
           >
             Description
           </label>
@@ -81,13 +81,13 @@ const AddBoat = () => {
             name="description"
             value={boatData.description}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full"
+            className="addboat-form"
           />
         </div>
         <div>
           <label
             htmlFor="price"
-            className="block text-sm font-medium text-gray-700"
+            className="addboat-label"
           >
             Price
           </label>
@@ -97,13 +97,13 @@ const AddBoat = () => {
             name="price"
             value={boatData.price}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full"
+            className="addboat-form"
           />
         </div>
         <div>
           <label
             htmlFor="color"
-            className="block text-sm font-medium text-gray-700"
+            className="addboat-label"
           >
             Color
           </label>
@@ -113,13 +113,13 @@ const AddBoat = () => {
             name="color"
             value={boatData.color}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full"
+            className="addboat-form"
           />
         </div>
         <div>
           <label
             htmlFor="rent_price"
-            className="block text-sm font-medium text-gray-700"
+            className="addboat-label"
           >
             Rent Price
           </label>
@@ -129,13 +129,13 @@ const AddBoat = () => {
             name="rent_price"
             value={boatData.rent_price}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full"
+            className="addboat-form"
           />
         </div>
         <div>
           <label
             htmlFor="input-picture"
-            className="block text-sm font-medium text-gray-700"
+            className="addboat-label"
           >
             Picture
           </label>
@@ -145,10 +145,10 @@ const AddBoat = () => {
             name="picture"
             value={boatData.picture}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full"
+            className="addboat-form"
           />
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center pt-8">
           <button
             type="submit"
             className="bg-lime-500 text-white px-4 py-2 rounded hover:bg-lime-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"

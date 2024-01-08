@@ -31,3 +31,16 @@ a {
   width: 100%;
   height: 100%;
 }
+
+.addboat-form {
+  margin-top: 4px;
+  padding: 8px 12px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.addboat-label {
+  font-weight: 500;
+  color: rgb(55 65 81);
+}
